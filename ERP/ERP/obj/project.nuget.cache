@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "s+THR8+tkb8=",
+  "success": true,
+  "projectFilePath": "/home/jonatasgdec/RiderProjects/Planilhas/ERP/ERP/ERP.csproj",
+  "expectedPackageFiles": [
+    "/home/jonatasgdec/.nuget/packages/microsoft.aspnetcore.components.webassembly.server/9.0.0/microsoft.aspnetcore.components.webassembly.server.9.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

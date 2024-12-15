@@ -4,10 +4,11 @@
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <NoDefaultLaunchSettingsFile>True</NoDefaultLaunchSettingsFile>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MudBlazor" Version="8.0.0-preview.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.0"/>
     </ItemGroup>
 
 </Project>
