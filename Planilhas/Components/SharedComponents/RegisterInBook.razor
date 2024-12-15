@@ -1,0 +1,19 @@
+<section class="d-flex gap-3 w-100 justify-content-between">
+  <MudTextField T="string" Variant="Variant.Filled" Label="Talão"/>
+  <MudTextField T="string" Variant="Variant.Filled" Label="Data"/>
+  <MudTextField T="string" Variant="Variant.Filled" Label="Nome"/>
+  <MudSelect T="string" Variant="Variant.Filled" @bind-Value="_typeRegister" Label="Tipo" Clearable>
+    @foreach (RegisterType type in Enum.GetValues(typeof(RegisterType)))
+    {
+      <MudSelectItem Value="@type.ToString()">@type</MudSelectItem>
+    }
+  </MudSelect>
+  <MudTextField T="string" Variant="Variant.Filled" Label="Nome"/>
+  <MudTextField T="string" Variant="Variant.Filled" Label="Dízimo"/>
+  <MudTextField T="string" Variant="Variant.Filled" Label="Oferta"/>
+  <MudButton Variant="Variant.Filled" Color="Color.Primary">Registrar</MudButton>
+</section>
+
+@code{
+  private string _typeRegister = string.Empty;
+}

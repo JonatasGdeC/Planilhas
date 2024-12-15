@@ -1,0 +1,58 @@
+<MudTable  Items="@ListRegisters" Hover="true" Breakpoint="Breakpoint.Sm" Style="width: 100%">
+  <HeaderContent>
+    <MudTh>Talão</MudTh>
+    <MudTh>Data</MudTh>
+    <MudTh>Nome</MudTh>
+    <MudTh>Dízimo</MudTh>
+    <MudTh>Oferta</MudTh>
+    <MudTh></MudTh>
+  </HeaderContent>
+  <RowTemplate>
+    <MudTd>
+      @context.Talao
+    </MudTd>
+    <MudTd>
+      @context.Date
+    </MudTd>
+    <MudTd>
+      @context.Name
+    </MudTd>
+    <MudTd>
+      @context.Dizimo
+    </MudTd>
+    <MudTd>
+      @context.Oferta
+    </MudTd>
+    <MudTd>
+      <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error"/>
+    </MudTd>
+  </RowTemplate>
+</MudTable>
+
+@code {
+  private List<Register>? ListRegisters = new List<Register>();
+
+  protected override void OnParametersSet()
+  {
+    ListRegisters.Add(new Register
+    {
+      Id = new Guid(),
+      Talao = 12345678,
+      Date = DateTime.Today,
+      Name = "Testes",
+      Dizimo = 12,
+      Oferta = 13
+    });
+  }
+}
+
+<style>
+  .mud-table-root .mud-table-head .mud-table-cell {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .mud-table-root .mud-table-body .mud-table-cell {
+    font-size: 16px;
+  }
+</style>
