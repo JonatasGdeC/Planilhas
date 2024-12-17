@@ -12,7 +12,9 @@
 
   <main>
     <div class="top-row px-4">
-      <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+      <MudButton @onclick="OpenDialogRegister" Variant="Variant.Filled" Color="Color.Primary">
+        Novo Registro
+      </MudButton>
     </div>
 
     <article class="content px-4">
@@ -28,3 +30,12 @@
   <a href="." class="reload">Reload</a>
   <span class="dismiss">🗙</span>
 </div>
+
+@code{
+  private void OpenDialogRegister()
+  {
+    DialogParameters parameters = new DialogParameters();
+    DialogOptions options = new DialogOptions { CloseOnEscapeKey = true, FullWidth = true, MaxWidth = MaxWidth.Large};
+    DialogService.Show<DialogRegisterInBook>(title: "", parameters: parameters, options: options);
+  }
+}
