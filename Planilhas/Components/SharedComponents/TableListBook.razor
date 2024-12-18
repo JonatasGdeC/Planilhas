@@ -35,11 +35,11 @@
 </MudTable>
 
 @code {
-  private List<Register>? ListRegisters = new List<Register>();
+  private List<RegisterInputs>? ListRegisters = new List<RegisterInputs>();
 
   protected override void OnParametersSet()
   {
-    ListRegisters.Add(new Register
+    ListRegisters.Add(new RegisterInputs
     {
       Id = new Guid(),
       Talao = 12345678,
