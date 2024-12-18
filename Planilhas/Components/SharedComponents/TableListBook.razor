@@ -1,53 +1,54 @@
-<MudTable  Items="@ListRegisters" Hover="true" Breakpoint="Breakpoint.Sm" Style="width: 100%">
-  <HeaderContent>
-    <MudTh>Talão</MudTh>
-    <MudTh>Data</MudTh>
-    <MudTh>Nome</MudTh>
-    <MudTh>Dízimo</MudTh>
-    <MudTh>Oferta</MudTh>
-    <MudTh></MudTh>
-  </HeaderContent>
-  <RowTemplate>
-    <MudTd>
-      @context.Talao
-    </MudTd>
-    <MudTd>
-      @context.Date
-    </MudTd>
-    <MudTd>
-      @context.Name
-    </MudTd>
-    <MudTd>
-      @context.Dizimo
-    </MudTd>
-    <MudTd>
-      @context.Oferta
-    </MudTd>
-    <MudTd>
-      <MudTooltip Text="Editar">
-        <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary"/>
-      </MudTooltip>
-      <MudTooltip Text="Excluir">
-        <MudIconButton OnClick="OpenDialogDeleteRegister" Icon="@Icons.Material.Filled.Delete" Color="Color.Error"/>
-      </MudTooltip>
-    </MudTd>
-  </RowTemplate>
-</MudTable>
+@if (_isLoading)
+{
+  <p>Carregando...</p>
+}
+else
+{
+  <MudTable  Items="@ListRegisters" Hover="true" Breakpoint="Breakpoint.Sm" Style="width: 100%">
+    <HeaderContent>
+      <MudTh>Talão</MudTh>
+      <MudTh>Data</MudTh>
+      <MudTh>Nome</MudTh>
+      <MudTh>Dízimo</MudTh>
+      <MudTh>Oferta</MudTh>
+      <MudTh></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+      <MudTd>
+        @context.Talao
+      </MudTd>
+      <MudTd>
+        @context.Date
+      </MudTd>
+      <MudTd>
+        @context.Name
+      </MudTd>
+      <MudTd>
+        @context.Dizimo
+      </MudTd>
+      <MudTd>
+        @context.Oferta
+      </MudTd>
+      <MudTd>
+        <MudTooltip Text="Editar">
+          <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary"/>
+        </MudTooltip>
+        <MudTooltip Text="Excluir">
+          <MudIconButton OnClick="OpenDialogDeleteRegister" Icon="@Icons.Material.Filled.Delete" Color="Color.Error"/>
+        </MudTooltip>
+      </MudTd>
+    </RowTemplate>
+  </MudTable>
+}
 
 @code {
   private List<RegisterInputs>? ListRegisters = new List<RegisterInputs>();
+  private bool _isLoading = true;
 
-  protected override void OnParametersSet()
+  protected override async Task OnParametersSetAsync()
   {
-    ListRegisters.Add(new RegisterInputs
-    {
-      Id = new Guid(),
-      Talao = 12345678,
-      Date = DateTime.Today,
-      Name = "Testes",
-      Dizimo = 12,
-      Oferta = 13
-    });
+    ListRegisters = await RegisterInputsService.GetAllRegisterInputs();
+    _isLoading = false;
   }
 
   private void OpenDialogDeleteRegister()

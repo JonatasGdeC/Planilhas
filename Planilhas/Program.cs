@@ -1,6 +1,7 @@
 using MudBlazor.Services;
 using Planilhas.Components;
 using Planilhas.Data;
+using Planilhas.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,7 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddMudServices();
 builder.Services.AddDbContext<ChurchDbContext>();
+builder.Services.AddScoped<RegisterInputsService>();
 
 
 var app = builder.Build();
