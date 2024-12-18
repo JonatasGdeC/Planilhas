@@ -1,4 +1,4 @@
-namespace Planilhas.Models;
+namespace Frontend.Models;
 
 public class Register
 {

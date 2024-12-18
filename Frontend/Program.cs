@@ -1,5 +1,5 @@
 using MudBlazor.Services;
-using Planilhas.Components;
+using Frontend.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Planilhas.Enums;
+namespace Frontend.Enums;
 
 public enum InputsType
 {

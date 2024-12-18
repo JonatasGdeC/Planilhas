@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace Planilhas.Utils;
+namespace Frontend.Utils;
 
 public static class EnumExtensions
 {
