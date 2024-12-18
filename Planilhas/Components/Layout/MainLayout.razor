@@ -35,7 +35,7 @@
   private void OpenDialogRegister()
   {
     DialogParameters parameters = new DialogParameters();
-    DialogOptions options = new DialogOptions { CloseOnEscapeKey = true, FullWidth = true, MaxWidth = MaxWidth.Large};
+    DialogOptions options = new DialogOptions { CloseOnEscapeKey = true, FullWidth = true, MaxWidth = MaxWidth.Medium};
     DialogService.Show<DialogRegisterInBook>(title: "", parameters: parameters, options: options);
   }
 }

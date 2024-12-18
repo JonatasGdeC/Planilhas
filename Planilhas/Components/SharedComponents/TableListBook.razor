@@ -24,7 +24,12 @@
       @context.Oferta
     </MudTd>
     <MudTd>
-      <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error"/>
+      <MudTooltip Text="Editar">
+        <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary"/>
+      </MudTooltip>
+      <MudTooltip Text="Excluir">
+        <MudIconButton OnClick="OpenDialogDeleteRegister" Icon="@Icons.Material.Filled.Delete" Color="Color.Error"/>
+      </MudTooltip>
     </MudTd>
   </RowTemplate>
 </MudTable>
@@ -43,6 +48,13 @@
       Dizimo = 12,
       Oferta = 13
     });
+  }
+
+  private void OpenDialogDeleteRegister()
+  {
+    DialogParameters parameters = new DialogParameters();
+    DialogOptions options = new DialogOptions { CloseOnEscapeKey = true, FullWidth = true};
+    DialogService.Show<DialogDeleteRegister>(title: "", parameters: parameters, options: options);
   }
 }
 

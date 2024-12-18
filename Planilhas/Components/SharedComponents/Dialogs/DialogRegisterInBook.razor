@@ -13,8 +13,7 @@
         @switch (_typeRegister)
         {
           case "input":
-            <MudSelect T="string" Variant="Variant.Filled" @bind-Value="_typeOfInput" Label="Tipo de entrada"
-                       Clearable="true">
+            <MudSelect T="string" Variant="Variant.Filled" @bind-Value="_typeOfInput" Label="Tipo de entrada" Clearable>
               @foreach (InputsType type in Enum.GetValues(typeof(InputsType)))
               {
                 <MudSelectItem Value="@type.ToString()">@type.GetDisplayName()</MudSelectItem>
@@ -23,8 +22,7 @@
             break;
 
           case "output":
-            <MudSelect T="string" Variant="Variant.Filled" @bind-Value="_typeOfOutput" Label="Tipo de saída"
-                       Clearable="true">
+            <MudSelect T="string" Variant="Variant.Filled" @bind-Value="_typeOfOutput" Label="Tipo de saída" Clearable>
               @foreach (OutputsType type in Enum.GetValues(typeof(OutputsType)))
               {
                 <MudSelectItem Value="@type.ToString()">@type.GetDisplayName()</MudSelectItem>
@@ -37,12 +35,19 @@
       @switch (_typeRegister)
       {
         case "input":
-          <div class="d-flex gap-3 w-100">
-            <MudTextField T="string" Variant="Variant.Filled" Label="Talão"/>
-            <MudTextField T="string" Variant="Variant.Filled" Label="Data"/>
-            <MudTextField T="string" Variant="Variant.Filled" Label="Nome"/>
-            <MudTextField T="string" Variant="Variant.Filled" Label="Dízimo"/>
-            <MudTextField T="string" Variant="Variant.Filled" Label="Oferta"/>
+          <div class="d-flex flex-column gap-3 w-100">
+            <div class="d-flex gap-3 w-100">
+              <MudTextField T="string" Variant="Variant.Filled" Label="Talão"/>
+              <MudTextField T="string" Variant="Variant.Filled" Label="Data"/>
+            </div>
+            @if (string.IsNullOrEmpty(_typeOfInput))
+            {
+              <MudTextField T="string" Variant="Variant.Filled" Label="Nome"/>
+            }
+            <div class="d-flex gap-3 w-100">
+              <MudTextField T="string" Variant="Variant.Filled" Label="Dízimo"/>
+              <MudTextField T="string" Variant="Variant.Filled" Label="Oferta"/>
+            </div>
           </div>
           break;
         case "output":
@@ -69,8 +74,8 @@
 @code{
   [CascadingParameter] IMudDialogInstance MudDialog { get; set; }
   private string _typeRegister = "input";
-  private string _typeOfInput = string.Empty;
-  private string _typeOfOutput = string.Empty;
+  private string? _typeOfInput;
+  private string? _typeOfOutput;
   private bool _displayFormByInputs = true;
 
   private void ToggleDisplayForms() => _displayFormByInputs = !_displayFormByInputs;

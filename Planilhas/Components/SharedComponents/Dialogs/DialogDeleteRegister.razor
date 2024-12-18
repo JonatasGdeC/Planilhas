@@ -1,0 +1,17 @@
+<MudDialog>
+  <DialogContent>
+    <MudText Style="font-size: 20px">
+      Deseja realmente excluir esse registro?
+    </MudText>
+  </DialogContent>
+  <DialogActions>
+    <MudButton OnClick="Cancel">Cancelar</MudButton>
+    <MudButton Variant="Variant.Filled" Color="Color.Error">Excluir</MudButton>
+  </DialogActions>
+</MudDialog>
+
+@code {
+  [CascadingParameter] IMudDialogInstance MudDialog { get; set; }
+
+  private void Cancel() => MudDialog.Cancel();
+}
