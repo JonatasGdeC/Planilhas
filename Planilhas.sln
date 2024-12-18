@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frontend", "Frontend\Frontend.csproj", "{C5D3F569-41A5-4960-8554-DD04B14C7FCB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planilhas", "Planilhas\Planilhas.csproj", "{C5D3F569-41A5-4960-8554-DD04B14C7FCB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

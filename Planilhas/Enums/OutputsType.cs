@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Frontend.Enums;
+namespace Planilhas.Enums;
 
 public enum OutputsType
 {
