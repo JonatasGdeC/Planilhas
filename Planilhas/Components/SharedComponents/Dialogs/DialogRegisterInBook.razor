@@ -37,16 +37,16 @@
         case "input":
           <div class="d-flex flex-column gap-3 w-100">
             <div class="d-flex gap-3 w-100">
-              <MudTextField T="string" Variant="Variant.Filled" Label="Talão"/>
-              <MudTextField T="string" Variant="Variant.Filled" Label="Data"/>
+              <MudTextField T="int" @bind-Value="_registerInputs.Talao" Variant="Variant.Filled" Label="Talão"/>
+              <MudTextField T="DateTime" @bind-Value="_registerInputs.Date" Variant="Variant.Filled" Label="Data"/>
             </div>
             @if (string.IsNullOrEmpty(_typeOfInput))
             {
-              <MudTextField T="string" Variant="Variant.Filled" Label="Nome"/>
+              <MudTextField T="string" @bind-Value="_registerInputs.Name" Variant="Variant.Filled" Label="Nome"/>
             }
             <div class="d-flex gap-3 w-100">
-              <MudTextField T="string" Variant="Variant.Filled" Label="Dízimo"/>
-              <MudTextField T="string" Variant="Variant.Filled" Label="Oferta"/>
+              <MudTextField T="double?" @bind-Value="_registerInputs.Dizimo" Variant="Variant.Filled" Label="Dízimo"/>
+              <MudTextField T="double?" @bind-Value="_registerInputs.Oferta" Variant="Variant.Filled" Label="Oferta"/>
             </div>
           </div>
           break;
@@ -65,7 +65,7 @@
   </DialogContent>
   <DialogActions>
     <MudButton OnClick="Close">Fechar</MudButton>
-    <MudButton Variant="Variant.Filled" Color="Color.Primary">Registrar</MudButton>
+    <MudButton OnClick="AddNewRegisterInput" Variant="Variant.Filled" Color="Color.Primary">Registrar</MudButton>
   </DialogActions>
 </MudDialog>
 
@@ -78,7 +78,14 @@
   private string? _typeOfOutput;
   private bool _displayFormByInputs = true;
 
+  private readonly RegisterInputs _registerInputs = new RegisterInputs();
+
   private void ToggleDisplayForms() => _displayFormByInputs = !_displayFormByInputs;
 
   private void Close() => MudDialog.Close();
+
+  private async Task AddNewRegisterInput()
+  {
+    await RegisterInputsService.AddRegisterInput(_registerInputs);
+  }
 }

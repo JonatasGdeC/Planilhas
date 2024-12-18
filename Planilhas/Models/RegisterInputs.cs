@@ -4,7 +4,7 @@ namespace Planilhas.Models;
 
 public class RegisterInputs
 {
-  public Guid Id { get; set; }
+  public Guid Id { get; set; } = new Guid();
   public int Talao { get; set; }
   public InputsType? InputType { get; set; }
   public DateTime Date { get; set; }
